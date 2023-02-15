@@ -28,8 +28,8 @@
 					<div class="col-sm-8">
 						<div style="font-size: 20px">
 							<ul class="nav justify-content-end">
-								<li><a href="cart.html" class="text-dark"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
-								<li><a href="login" class="text-dark"><i class="fa fa-lock"></i> Đăng nhập</a></li>
+								<li><a href="cart.html" class="text-dark"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+								<li><a href="login" class="text-dark"><i class="fa fa-lock"></i> Login</a></li>
 							</ul>
 						</div>
 					</div>
