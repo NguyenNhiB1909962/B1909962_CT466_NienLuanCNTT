@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home Pages</title>
+    <title>Trang Chủ</title>
     <link href="public/frontend/css/bootstrap.min.css" rel="stylesheet">
     <link href="public/frontend/css/font-awesome.min.css" rel="stylesheet">
-	{{-- <link href="public/frontend/css/main.css" rel="stylesheet"> --}}
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
@@ -31,7 +30,7 @@
 							<ul class="nav justify-content-end">
 								<li><a href="#" class="text-dark"><i class="fa fa-user"></i> Tài khoản</a></li>
 								<li><a href="cart.html" class="text-dark"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
-								<li><a href="{{URL::to('/dangnhap')}}" class="text-dark"><i class="fa fa-lock"></i> Đăng nhập</a></li>
+								<li><a href="login" class="text-dark"><i class="fa fa-lock"></i> Đăng nhập</a></li>
 							</ul>
 						</div>
 					</div>
@@ -41,11 +40,6 @@
 
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                {{-- <a class="navbar-brand" href="#">Navbar</a> --}}
-                {{-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button> --}}
-              
                 <div class="collapse navbar-collapse" style="font-size: 20px" id="navbarSupportedContent">
                   <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
@@ -77,6 +71,8 @@
 
     <section>
         <div class="container">
+            <h1 style="font-size: 45px" class="text-center text-warning">Thế Giới Laptop</h1>
+            <hr size="10px">
             <div class="row">
                 <div class="col-sm-12">
                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="color:blue">
@@ -129,6 +125,12 @@
             </div>
         </div>
     </section>
+
+    <div class="container text-center">
+        <h1 style="font-size: 40px">Thế Giới Laptop - nơi có nhiều sản phẩm chính hãng</h1>
+        <p style="font-size: 20px">Thế Giới Laptop mang đến nhiều sản phẩm uy tín, chất lượng, đảm bảo phù hợp với nhu cầu của khách hàng. Bên cạnh đó, shop có các sản phẩm giá cả phải chăng, shop rất hân hạnh được phục vụ quý khách.</p>
+        <h2 style="font-size: 30px" class="text-danger pb-5">Cảm ơn bạn đã tin tưởng và lựa chọn sản phẩm của Thế Giới Laptop!!!</h2>
+    </div>
 
     <footer>
         <div class="container">
