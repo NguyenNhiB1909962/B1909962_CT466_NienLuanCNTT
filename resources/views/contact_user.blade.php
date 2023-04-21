@@ -31,38 +31,48 @@
                         <h1 style="font-family: cursive; font-size: 40px" class="pt-5">Thế Giới LapTop</h1>
                     </div>
 					<div class="col-sm-4">
-                        <div style="font-size: 20px">
+						<div style="font-size: 20px">
 							<ul class="nav justify-content-end">
-								<li><a href="{{URL::to('login')}}" class="text-dark"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+								<li><a href="{{URL::to('cart')}}" class="text-dark"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle pt-3 px-3 rounded-circle border border-info bg-success text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{$data->name}}
+                                    </a>
+                                    <div class="dropdown-menu bg-secondary" style="font-size: 25px; background-color: FloralWhite" aria-labelledby="navbarDropdown">
+                                        <a href="{{URL::to('/order')}}" class="text-white" style="font-size: 20px"><i class="fas fa-shopping-bag"></i> Order</a>
+                                        <a href="{{URL::to('/login')}}" class="text-white" style="font-size: 20px"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                                    </div>
+                                </li>
 							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="collapse navbar-collapse" style="font-size: 20px" id="navbarSupportedContent">
                   <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{URL::to('welcome')}}">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{URL::to('/home_page')}}">Home <span class="sr-only">(current)</span></a>
                     </li>
                     &nbsp;
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Shop Products
                         </a>
-                        <div class="dropdown-menu" style="font-size: 25px; background-color: FloralWhite" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Products</a>
+                        <div class="dropdown-menu bg-secondary" style="font-size: 25px; background-color: FloralWhite" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{URL::to('/product_home')}}">Products</a>
                         </div>
                     </li>
                     &nbsp;
                     <li class="nav-item">
-                        <a class="nav-link" href="{{URL::to('contact')}}">Contact</a>
+                        <a class="nav-link" href="{{URL::to('/contact_user')}}">Contact</a>
                     </li>
                     </ul>
-                    <form class="form-inline my-2 my-lg-0">
-                        
+                    <form class="form-inline my-2 my-lg-0" action="{{URL::to('/search')}}" method="POST">
+                        @csrf
                         <input class="form-control mr-sm-2" style="height: 30px; font-size: 15px" type="text" name="key" placeholder="Search">
                         <input class="form-control mr-sm-2" style="height: 30px; font-size: 15px; background-color: forestgreen; color: #e8e8e8" type="submit" name="search_pro" value="Find">
                     </form>
