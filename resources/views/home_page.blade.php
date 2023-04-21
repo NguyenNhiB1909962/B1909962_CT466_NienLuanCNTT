@@ -32,7 +32,16 @@
 					<div class="col-sm-4">
 						<div style="font-size: 20px">
 							<ul class="nav justify-content-end">
-								<li><a href="{{URL::to('login')}}" class="text-dark"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+								<li><a href="{{URL::to('cart')}}" class="text-dark"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle pt-3 px-3 rounded-circle border border-info bg-success text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{$data->name}}
+                                    </a>
+                                    <div class="dropdown-menu bg-secondary" style="font-size: 25px; background-color: FloralWhite" aria-labelledby="navbarDropdown">
+                                        <a href="{{URL::to('/order')}}" class="text-white" style="font-size: 20px"><i class="fas fa-shopping-bag"></i> Order</a>
+                                        <a href="{{URL::to('/login')}}" class="text-white" style="font-size: 20px"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                                    </div>
+                                </li>
 							</ul>
 						</div>
 					</div>
@@ -45,7 +54,7 @@
                 <div class="collapse navbar-collapse" style="font-size: 20px" id="navbarSupportedContent">
                   <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{URL::to('welcome')}}">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{URL::to('/home_page')}}">Home <span class="sr-only">(current)</span></a>
                     </li>
                     &nbsp;
                     <li class="nav-item dropdown">
@@ -53,15 +62,16 @@
                             Shop Products
                         </a>
                         <div class="dropdown-menu bg-secondary" style="font-size: 25px; background-color: FloralWhite" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Products</a>
+                            <a class="dropdown-item" href="{{URL::to('/product_home')}}">Products</a>
                         </div>
                     </li>
                     &nbsp;
                     <li class="nav-item">
-                        <a class="nav-link" href="{{URL::to('contact')}}">Contact</a>
+                        <a class="nav-link" href="{{URL::to('/contact_user')}}">Contact</a>
                     </li>
                     </ul>
-                    <form class="form-inline my-2 my-lg-0">
+                    <form class="form-inline my-2 my-lg-0" action="{{URL::to('/search')}}" method="POST">
+                        @csrf
                         <input class="form-control mr-sm-2" style="height: 30px; font-size: 15px" type="text" name="key" placeholder="Search">
                         <input class="form-control mr-sm-2" style="height: 30px; font-size: 15px; background-color: forestgreen; color: #e8e8e8" type="submit" name="search_pro" value="Find">
                     </form>
@@ -138,8 +148,70 @@
         </div>
     </section>
 
-    
-
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="left-sidebar">
+                        <h2 style="color: blueviolet; text-align: center"><b>CATEGORY</b></h2>
+                        <div class="panel-group">
+                            @foreach($category as $key => $cate)
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <div class="panel-title">
+                                            <a href="{{URL::to('/category_product/'.$cate->category_id)}}" style="text-decoration: none; color: black; display: block;">{{$cate->category_name}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        &nbsp;
+                        <div>
+                            <h2 style="color: blueviolet; text-align: center"><b>BRAND</b></h2>
+                            <div>
+                                <ul class="nav nav-pills nav-stacked list-group" style="list-style: none; font-size: 15px; text-align: left">
+                                    @foreach ($brand as $key => $bra)
+                                        <li style="border-bottom: 1px solid #e8e8e8"><a href="{{URL::to('/brand_product/'.$bra->brand_id)}}" style="text-decoration: none; color: black; display: block;">{{$bra->brand_name}}</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-9 padding-right">
+                    <div>
+                        <h2 style="color: blueviolet; text-align: center"><b>NEWS PRODUCT</b></h2>
+                        @foreach ($all_pro as $key => $pro)
+                        <a href="{{URL::to('/product_details/'.$pro->product_id)}}" style="text-decoration: none">
+                        <div class="col-sm-4">
+                            <div>
+                                <div style="text-align: center">
+                                    <img src="{{URL::to('public/upload/product/'.$pro->product_image)}}" alt="" height="200px" width="180px">
+                                    <h2 style="color:rgb(251, 5, 5)">{{number_format($pro->product_price).' '.'VND'}}</h2>
+                                    <p style="font-size: 20px">{{$pro->product_name}}</p>
+                                    <form action="{{URL::to('/add_cart')}}" method="POST">
+                                        @csrf
+                                        <span>
+                                            <label style="font-size: 15px; color: black">Quantity: </label>
+                                            <input name="qtt" type="number" min="1" value="1" style="font-size: 15px; width: 50px"/>
+                                            <br>
+                                            <input name="id_pro" type="hidden" value="{{$pro->product_id}}"/>
+                                            <button type="submit" class="btn btn-default" style="font-size: 15px">
+                                                <i class="fa fa-shopping-cart"></i>
+                                                Add to cart
+                                            </button>
+                                        </span>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    &nbsp;&nbsp;
     <div class="container text-center">
         <h1 style="font-size: 40px">Thế Giới Laptop - nơi có nhiều sản phẩm chính hãng</h1>
         <br>
