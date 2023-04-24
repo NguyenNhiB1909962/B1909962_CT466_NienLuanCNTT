@@ -20,7 +20,6 @@ class CartController extends Controller
         $quantity = $request->qtt;
         $dataId = DB::table('tbl_product')->where('product_id', $id_product)->first();
 
-        // Cart::add('293ad', 'Product 1', 1, 9.99, 550);
         $data['id'] = $dataId->product_id;
         $data['qty'] = $quantity;
         $data['name'] = $dataId->product_name;
@@ -28,7 +27,6 @@ class CartController extends Controller
         $data['weight'] = '47';
         $data['options']['image'] = $dataId->product_image;
         Cart::add($data);
-        // Cart::destroy();
         return Redirect::to('/cart');
     }
 
