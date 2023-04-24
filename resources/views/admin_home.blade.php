@@ -96,7 +96,7 @@
         <section id="main-content">
             <section class="wrapper">
                 @yield('admin_content')
-                <h3>Chào Mừng Bạn Đến Với Trang Tổng Quan!</h3>
+                {{-- <h3>Chào Mừng Bạn Đến Với Trang A!</h3> --}}
             </section>
             <div class="footer" style="width:36cm">
                 <div class="wthree-copyright">
